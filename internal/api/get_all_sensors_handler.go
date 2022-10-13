@@ -16,14 +16,15 @@ func (h *GetAllSensorsHandler) ServeHTTP(w http.ResponseWriter, r *http.Request)
 	response := models.Response{Sensors: make([]models.Sensor, 0, len(sensors))}
 	for _, sensor := range sensors {
 		sensorData := models.Sensor{
-			Address:         sensor.GetAddress(),
-			SensorType:      sensor.GetSensorType(),
-			BatteryLevel:    sensor.GetBatteryLevel(),
-			BatteryVoltage:  sensor.GetBatteryVoltage(),
-			TempCelsius:     sensor.GetTempCelsius(),
-			TempFahrenheit:  sensor.GetTempFahrenheit(),
-			TankLevelMM:     sensor.GetTankLevelMM(),
-			TankLevelInches: sensor.GetTankLevelInches(),
+			Address:           sensor.GetAddress(),
+			SensorType:        sensor.GetSensorType(),
+			SensorReadQuality: sensor.GetReadQuality(),
+			BatteryLevel:      sensor.GetBatteryLevel(),
+			BatteryVoltage:    sensor.GetBatteryVoltage(),
+			TempCelsius:       sensor.GetTempCelsius(),
+			TempFahrenheit:    sensor.GetTempFahrenheit(),
+			TankLevelMM:       sensor.GetTankLevelMM(),
+			TankLevelInches:   sensor.GetTankLevelInches(),
 			TankLevelPercent: map[string]float64{
 				"20lb_v":  sensor.GetLevelPercent("20lb_v"),
 				"30lb_v":  sensor.GetLevelPercent("30lb_v"),
